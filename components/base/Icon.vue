@@ -14,7 +14,7 @@
 
 	const iconsList: {[key: string]: string} = icons;
 
-	const svg = computed(():string => iconsList[props.name]);
+	const svg = computed<string>(() => iconsList[props.name]);
 </script>
 
 <style scoped>
