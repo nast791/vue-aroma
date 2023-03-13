@@ -40,18 +40,14 @@
 
 <style lang="scss" scoped>
 	.logo {
-		:deep {
-			svg {
-				fill: #374151;
-			}
+		:deep(svg) {
+			fill: #374151;
 		}
 	}
 	.burger {
 		&.active, &:hover {
-			:deep {
-				svg {
-					stroke: #fb7185;
-				}
+			:deep(svg) {
+				stroke: #fb7185;
 			}
 		}
 	}
