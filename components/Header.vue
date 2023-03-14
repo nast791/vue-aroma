@@ -1,6 +1,6 @@
-	<template>
-	<div class="fixed bg-slate-200 w-full z-50">
-		<div class="flex justify-between items-center w-full max-w-[1230px] px-15 py-8 mx-auto">
+<template>
+	<div class="fixed bg-slate-200 w-full z-50" v-click-outside="closeMenu">
+		<div class="flex justify-between items-center container max-w-[1200px] py-8 mx-auto">
 			<NuxtLink :to="{name: 'index'}" class="flex items-center translate-x-[-5px]">
 				<BaseIcon name="logo" class="logo w-40 h-24 translate-y-[-1px]"/>
 				<div class="font-sans text-xl sm:text-lg text-gray-800 uppercase">Aromatica</div>
@@ -8,12 +8,12 @@
 			<div class="flex items-center justify-between ml-20">
 				<BaseIcon
 					name="add"
-					:class="[`add w-24 h-24 mr-10 cursor-pointer duration-300 translate-y-[2px] hover:opacity-60`,
+					:class="[`add w-24 h-24 cursor-pointer duration-300 translate-y-[2px] hover:opacity-60`,
 					isMenuOpen && `active`]"
 					@click.stop="toggleModal"
 					v-if="isAdmin"
 				/>
-				<BaseCheckbox v-model="isAdmin" type="switch">
+				<BaseCheckbox class="roles ml-10 sm:ml-0" v-model="isAdmin" type="switch">
 					<BaseIcon
 						name="pencil"
 						:class="[`pencil w-24 h-24 ml-5 duration-300 opacity-20 [&.active]:opacity-100`, isAdmin && `active`]"
@@ -26,6 +26,9 @@
 				/>
 			</div>
 		</div>
+		<Transition name="menu">
+			<Menu v-show="isMenuOpen"/>
+		</Transition>
 	</div>
 </template>
 
@@ -35,6 +38,7 @@
 	const isModalShow = ref<boolean>(false);
 	// TODO:
 	const toggleMenu = () => isMenuOpen.value = !isMenuOpen.value;
+	const closeMenu = () => isMenuOpen.value = false;
 	const toggleModal = () => isModalShow.value = !isModalShow.value;
 </script>
 
@@ -47,8 +51,23 @@
 	.burger {
 		&.active, &:hover {
 			:deep(svg) {
-				stroke: #fb7185;
+				stroke: #f43f5e;
 			}
 		}
+	}
+	.roles {
+		:deep(.trigger) {
+			@media (max-width: 575px) {
+				display: none;
+			}
+		}
+	}
+	.menu-enter-active,
+	.menu-leave-active {
+		transition: all 0.3s ease;
+	}
+	.menu-enter-from,
+	.menu-leave-to {
+		max-height: 0;
 	}
 </style>

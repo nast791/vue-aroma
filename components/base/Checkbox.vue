@@ -4,7 +4,7 @@
 		<span>
 			<slot name="prepend"/>
 		</span>
-		<div :class="[triggerClasses, modelValue && 'active']"/>
+		<div :class="['trigger', triggerClasses, modelValue && 'active']"/>
 		<span>
 			<slot/>
 		</span>
@@ -16,7 +16,7 @@
 
 	interface Props {
 		modelValue: boolean,
-		type: CheckboxTypes
+		type: CheckboxTypes,
 	}
 
 	const props = withDefaults(defineProps<Props>(), {
@@ -36,7 +36,7 @@
 	const triggerClasses = computed(() => {
 		switch(props.type) {
 			case 'switch':
-				return `w-40 h-20 bg-gray-700 rounded-[34px] duration-300
+				return `w-40 h-20 bg-primary rounded-[34px] duration-300
 				before:duration-300 before:content-[''] before:absolute before:w-20 before:h-20
 				before:bg-gray-50 before:rounded-[34px] before:translate-x-[-1px]
 				[&.active]:before:bg-rose-400 [&.active]:before:translate-x-[101%]`;

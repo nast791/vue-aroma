@@ -9,6 +9,10 @@ module.exports = {
     "./nuxt.config.{js,ts}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: '15px',
+    },
     extend: {
       spacing: {
         1: '1px',
@@ -46,6 +50,7 @@ module.exports = {
       fontSize: {
         sm: ['14px', '16px'],
         base: ['16px', '18px'],
+        medium: ['18px', '20px'],
         lg: ['20px', '24px'],
         xl: ['24px', '28px'],
         '2xl': ['28px', '32px'],
@@ -60,6 +65,10 @@ module.exports = {
         'md': {'max': '767px'},
         'sm': {'max': '575px'},
         'xs': {'max': '450px'},
+      },
+      colors: {
+        primary: '#374151',
+        active: '#f43f5e',
       }
     },
   },
