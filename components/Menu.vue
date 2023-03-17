@@ -14,8 +14,9 @@
 </template>
 
 <script setup lang="ts">
-	//TODO
-	const menu = reactive([
+	import {Menu} from "~/models/menu";
+
+	const menu = reactive<Menu[]>([
 		{
 			title: 'Бренды',
 			route: 'index'

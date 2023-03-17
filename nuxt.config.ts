@@ -7,6 +7,7 @@ export default defineNuxtConfig({
 		// 'data': fileURLToPath(new URL('./assets/other/data', import.meta.url))
 	},
 	app: {
+		baseURL: '/nuxt-github-pages/',
 		head: {
 			meta: [
 				{charset: 'utf-8'},
@@ -27,5 +28,8 @@ export default defineNuxtConfig({
 	],
 	plugins: [
 		'@/plugins/v-clickoutside.ts'
-	]
+	],
+	typescript: {
+		strict: true
+	}
 })

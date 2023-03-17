@@ -12,28 +12,18 @@
 </template>
 
 <script setup lang="ts">
-	import {CheckboxTypes} from './enum';
-
-	interface Props {
-		modelValue: boolean,
-		type: CheckboxTypes,
-	}
-
-	const props = withDefaults(defineProps<Props>(), {
+	const props = withDefaults(defineProps<CheckboxProps>(), {
 		modelValue: false,
-		type: CheckboxTypes.SWITCH,
+		type: 'switch',
 	});
 
-	const emit = defineEmits<{
-		(e: 'update:modelValue', value: boolean): void
-	}>()
+	const emit = defineEmits<CheckboxEmits>();
 
 	const updateInput = (event: Event) => {
 		emit('update:modelValue', (event.target as HTMLInputElement).checked);
 	}
 
-	// TODO:
-	const triggerClasses = computed(() => {
+	const triggerClasses = computed(() :string => {
 		switch(props.type) {
 			case 'switch':
 				return `w-40 h-20 bg-primary rounded-[34px] duration-300
@@ -44,6 +34,14 @@
 	});
 </script>
 
-<style scoped>
+<script lang="ts">
+interface CheckboxProps {
+	modelValue: boolean,
+	type: 'switch',
+}
+interface CheckboxEmits {
+	(e: 'update:modelValue', v: boolean): void,
+}
+</script>
 
-</style>
+<style scoped></style>

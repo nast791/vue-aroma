@@ -36,10 +36,10 @@
 	const isAdmin = ref<boolean>(false);
 	const isMenuOpen = ref<boolean>(false);
 	const isModalShow = ref<boolean>(false);
-	// TODO:
-	const toggleMenu = () => isMenuOpen.value = !isMenuOpen.value;
-	const closeMenu = () => isMenuOpen.value = false;
-	const toggleModal = () => isModalShow.value = !isModalShow.value;
+
+	const toggleMenu = (): boolean => isMenuOpen.value = !isMenuOpen.value;
+	const closeMenu = (): boolean => isMenuOpen.value = false;
+	const toggleModal = (): boolean => isModalShow.value = !isModalShow.value;
 </script>
 
 <style lang="scss" scoped>
