@@ -7,7 +7,7 @@ export default defineNuxtConfig({
 		// 'data': fileURLToPath(new URL('./assets/other/data', import.meta.url))
 	},
 	app: {
-		baseURL: '/nuxt-github-pages/',
+		baseURL: '/vue-aroma/',
 		head: {
 			meta: [
 				{charset: 'utf-8'},
