@@ -1,18 +1,18 @@
 <template>
-	<div class="fixed bg-slate-200 w-full z-50" v-click-outside="closeMenu">
+	<header class="fixed bg-slate-200 w-full z-50" v-click-outside="closeMenu">
 		<div class="flex justify-between items-center container max-w-[1200px] py-8 mx-auto">
 			<NuxtLink :to="{name: 'index'}" class="flex items-center translate-x-[-5px]">
 				<BaseIcon name="logo" class="logo w-40 h-24 translate-y-[-1px]"/>
-				<div class="font-sans text-xl sm:text-lg text-gray-800 uppercase">Aromatica</div>
+				<h1 class="font-sans text-xl sm:text-lg text-gray-800 uppercase">Aromatica</h1>
 			</NuxtLink>
 			<div class="flex items-center justify-between ml-20">
-				<BaseIcon
-					name="add"
-					:class="[`add w-24 h-24 cursor-pointer duration-300 translate-y-[2px] hover:opacity-60`,
-					isMenuOpen && `active`]"
-					@click.stop="toggleModal"
-					v-if="isAdmin"
-				/>
+				<NuxtLink :to="{name: 'create'}" v-if="isAdmin">
+					<BaseIcon
+						name="add"
+						:class="[`add w-24 h-24 duration-300 translate-y-[2px] hover:opacity-60`,
+						isMenuOpen && `active`]"
+					/>
+				</NuxtLink>
 				<BaseCheckbox class="roles ml-10 sm:ml-0" v-model="isAdmin" type="switch">
 					<BaseIcon
 						name="pencil"
@@ -29,17 +29,15 @@
 		<Transition name="menu">
 			<Menu v-show="isMenuOpen"/>
 		</Transition>
-	</div>
+	</header>
 </template>
 
 <script setup lang="ts">
 	const isAdmin = ref<boolean>(false);
 	const isMenuOpen = ref<boolean>(false);
-	const isModalShow = ref<boolean>(false);
 
 	const toggleMenu = (): boolean => isMenuOpen.value = !isMenuOpen.value;
 	const closeMenu = (): boolean => isMenuOpen.value = false;
-	const toggleModal = (): boolean => isModalShow.value = !isModalShow.value;
 </script>
 
 <style lang="scss" scoped>
